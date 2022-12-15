@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User1;
+use Exception;
+
 class userController extends Controller
 {
     /**
@@ -13,9 +15,8 @@ class userController extends Controller
      */
     public function index()
     {
-        $users1= User1::all();
+        $users1= User1::paginate(5);
         return view('users1.create')->with('users1', $users1);
-
     }
 
     /**
@@ -38,8 +39,7 @@ class userController extends Controller
     { 
         $input = $request->all();
         User1::create($input);
-        return redirect('user')->with('thongbao','Đã thêm thành công');
-
+        return redirect('user')->with('thongbao','Đã thêm thành công');  
     }
 
     /**
@@ -74,7 +74,14 @@ class userController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $user = User1::find($id);
+            $input = $request->all();
+            $user -> update($input);
+            return redirect('user')->with('sua', 'Da loi');     
+        }catch (Exception $e){
+            return redirect('Users1.edit')->with('loi', 'Da loi');    
+        }
     }
 
     /**
