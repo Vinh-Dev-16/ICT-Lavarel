@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User1;
-use Exception;
-
-class userController extends Controller
+use App\Models\Post;
+class postController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,8 @@ class userController extends Controller
      */
     public function index()
     {
-        $users1= User1::paginate(5);
-        return view('users1.create')->with('users1', $users1);
+        $post = Post::paginate(5);
+        return view('posts.create')->with('posts',$post);
     }
 
     /**
@@ -26,7 +24,7 @@ class userController extends Controller
      */
     public function create()
     {
-        return view('users1.create');
+        //
     }
 
     /**
@@ -36,10 +34,8 @@ class userController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
-        $input = $request->all();   
-        User1::create($input);
-        return redirect('user')->with('thongbao','Đã thêm thành công');  
+    {
+        //
     }
 
     /**
@@ -61,8 +57,7 @@ class userController extends Controller
      */
     public function edit($id)
     {
-        $user= User1::find($id);
-        return view('Users1.edit')->with('users1',$user);
+        //
     }
 
     /**
@@ -74,14 +69,7 @@ class userController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try{
-            $user = User1::find($id);
-            $input = $request->all();
-            $user -> update($input);
-            return redirect('user')->with('sua', 'Da loi');     
-        }catch (Exception $e){
-            return redirect('Users1.edit')->with('loi', 'Da loi');    
-        }
+        //
     }
 
     /**
@@ -92,8 +80,6 @@ class userController extends Controller
      */
     public function destroy($id)
     {
-        $user1 = User1::find($id);
-        $user1->delete();
-        return redirect('user')->with('xoa', 'Da thanh cong');
+        //
     }
 }
