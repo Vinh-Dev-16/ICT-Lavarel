@@ -29,6 +29,7 @@
 
         <div class="container">
             @yield('content')
+            @yield('edit')
         </div>
         <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
         <script>

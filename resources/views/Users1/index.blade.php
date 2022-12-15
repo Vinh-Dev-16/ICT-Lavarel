@@ -47,11 +47,9 @@
                                 <td>{{$item->address}}</td>
                                 <td>{{$item->sdt}}</td>
                                 <td class="table_crud">
-                                    <form method="POST" action="{{url('user/'.$item->id)}}">
-                                      @csrf
-                                      @method('DELETE')
-                                    <button type="submit" title="Xóa User" onclick="  return confirm ('Bạn có muốn xóa không?') " style="border: none;outline:none"><ion-icon name="create" style="color: green; font-size:25px;"></ion-icon></button>
-                                    </form>
+                                   
+                                    <a href="{{url('user/'.$item->id.'/edit')}}" title="Sửa User" style="border: none;outline:none"><ion-icon name="create" style="color: green; font-size:25px;"></ion-icon></a>
+                                   
                                     <form method="POST" action="{{url('user/'.$item->id)}}">
                                       @csrf
                                       @method('DELETE')

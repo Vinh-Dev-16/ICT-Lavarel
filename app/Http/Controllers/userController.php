@@ -61,7 +61,8 @@ class userController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user= User1::find($id);
+        return view('Users1.edit')->with('users1',$user);
     }
 
     /**
