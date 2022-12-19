@@ -24,6 +24,10 @@
             <label for="SDT" >SDT</label>
             <input type="text" class="form-control" value="{{$users1->sdt}}"  name="sdt" id="SDT" placeholder="VD: 0123456789">
         </div>
+        <div class="form-group">
+            <label for="id_post" >ID Post</label>
+            <input type="text" class="form-control" value="{{$users1->id_post}}"  name="id_post" id="id_post" placeholder="ID Post">
+        </div>
         <input type="submit" name="submit" value="Lưu" class="btn btn-success submit_add">
 </form>
 </div>

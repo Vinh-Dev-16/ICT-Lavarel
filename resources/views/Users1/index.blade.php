@@ -12,6 +12,12 @@
           <p> Đã xóa User </p>
         </div>
         @endif
+        @if(Session::has('loi'))
+        <div class='noti ' style="top: 43px;right:8px"> 
+          <h2> Thông báo lỗi </h2>
+          <p> Đã lỗi về thứ gì đó </p>
+        </div>
+        @endif
         @if(Session::has('sua'))
         <div class='noti success_noti' style="top: 43px;right:8px"> 
           <h2> Thông báo thành công </h2>

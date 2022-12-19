@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
+use GuzzleHttp\Promise\Create;
 use Illuminate\Database\Seeder;
-
+use \App\Models\User1;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,6 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        //  \App\Models\User1::factory(10)->create();
+        // $this->call([
+        //     User1Seeder::class
+        // ]);
+        // \App\Models\Post::factory(10)->create();
     }
 }

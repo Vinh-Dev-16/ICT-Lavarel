@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <title>Thông tin User</title>
+       <title>Thông tin</title>
        <link rel="stylesheet" type="text/css" href="{{asset('user.css')}}">
         <!-- font-awesome -->
     <link href="{{asset('css/font-awesome')}}" rel="stylesheet">

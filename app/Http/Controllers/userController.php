@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User1;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class userController extends Controller
 {
@@ -14,9 +15,10 @@ class userController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+       
         $users1= User1::paginate(5);
-        return view('users1.create')->with('users1', $users1);
+        return view('users1.create')->with (compact('users1'));
     }
 
     /**
@@ -37,9 +39,13 @@ class userController extends Controller
      */
     public function store(Request $request)
     { 
+        try{
         $input = $request->all();   
         User1::create($input);
         return redirect('user')->with('thongbao','Đã thêm thành công');  
+        }catch (Exception $e){
+        return redirect('user')->with('loi', 'Da loi');    
+        }
     }
 
     /**

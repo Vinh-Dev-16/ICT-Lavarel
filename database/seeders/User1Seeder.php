@@ -17,7 +17,8 @@ class User1Seeder extends Seeder
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
              'address' => Str::random(10),
-             'sdt' => Str::random(10)
+             'sdt' => '0123456789',
+             'id_post' => '1'
 
         ]);
     }

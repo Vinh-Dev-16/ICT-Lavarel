@@ -1,13 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Models\Post;
+use App\Models\Category;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\User1;
-class postController extends Controller
+class categoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +13,16 @@ class postController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {       
-        $post = DB::table('posts')
-          ->join('users1', 'posts.id_user','=','users1.id')
-          ->select('users1.name', 'posts.*')
-          ->orderBy('posts.id')
-          ->get();
-          $user = DB::table('users1')
-          ->select('users1.*')
-          ->get();
-        return view ('posts.create')->with(compact('post','user'));
+    {
+      $category = DB::table('categories') 
+      ->join('posts', 'categories.id','=' ,'posts.category_id')
+      ->select('posts.title','categories.*')
+      -> orderBy('categories.id')
+      ->get();
+      $post = DB::table('posts')
+      ->select('posts.*')
+      ->get();
+      return view ('categories.create')->with(compact('category','post'));
     }
 
     /**
@@ -34,7 +32,7 @@ class postController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        //
     }
 
     /**
@@ -44,14 +42,8 @@ class postController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {       
-            try{
-            $input = $request->all();   
-            Post::create($input);
-            return redirect('posts')->with('thongbao');  
-            }catch (Exception $e){
-            return redirect('posts')->with('post');  
-            }
+    {
+        //
     }
 
     /**
@@ -73,11 +65,7 @@ class postController extends Controller
      */
     public function edit($id)
     {
-        $post= Post::find($id);
-        $user = DB::table('users1')
-          ->select('users1.*')
-          ->get();
-        return view('posts.edit')->with(compact('post','user'));
+        //
     }
 
     /**
@@ -89,14 +77,7 @@ class postController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try{
-            $post = Post::find($id);
-            $input = $request->all();
-            $post -> update($input);
-            return redirect('posts')->with('sua', 'Da loi');     
-        }catch (Exception $e){
-            return redirect('posts.edit')->with('loi', 'Da loi');    
-        }
+        //
     }
 
     /**
@@ -107,8 +88,6 @@ class postController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        $post->delete();
-        return redirect('posts')->with('xoa', 'Da thanh cong');
+        //
     }
 }
