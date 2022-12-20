@@ -28,7 +28,7 @@
             <div class="col-12">
                 <div class="card_user">
                     <div class="card_title">
-                        <h2>TRANG Thể Loại</h2>
+                        <h2>TRANG THỂ LOẠI</h2>
                     </div>
                    
                     <div class="card_body">

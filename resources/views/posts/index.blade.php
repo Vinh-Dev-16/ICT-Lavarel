@@ -43,8 +43,9 @@
                             <thead class="thead-light">
                               <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Tên thể loại</th>
-                                <th scope="col">Parent Id</th>
+                                <th scope="col">Tên tác giả</th>
+                                <th scope="col">Tiêu đề</th>
+                                <th scope="col">Post</th>
                                 <th scope="col">CRUD</th>
                               </tr>
                             </thead>

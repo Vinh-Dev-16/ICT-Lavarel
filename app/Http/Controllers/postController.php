@@ -16,15 +16,7 @@ class postController extends Controller
      */
     public function index()
     {       
-        $post = DB::table('posts')
-          ->join('users1', 'posts.id_user','=','users1.id')
-          ->select('users1.name', 'posts.*')
-          ->orderBy('posts.id')
-          ->get();
-          $user = DB::table('users1')
-          ->select('users1.*')
-          ->get();
-        return view ('posts.create')->with(compact('post','user'));
+      
     }
 
     /**
@@ -34,7 +26,15 @@ class postController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $post = DB::table('posts')
+        ->join('users1', 'posts.id_user','=','users1.id')
+        ->select('users1.name', 'posts.*')
+        ->orderBy('posts.id')
+        ->get();
+        $user = DB::table('users1')
+        ->select('users1.*')
+        ->get();
+      return view ('posts.create')->with(compact('post','user'));
     }
 
     /**

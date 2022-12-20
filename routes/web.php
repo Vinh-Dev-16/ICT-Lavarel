@@ -25,11 +25,13 @@ Route::resource("/user", userController::class);
 
 // Post
 
-Route::get("posts", [postController::class, 'index']);
+Route::get("posts", [postController::class, 'create']);
 Route::post("posts/store",[postController::class, 'store']);
 Route::delete("posts/{id}",[postController::class, 'destroy']);
 Route::get('posts/{id}/edit',[postController::class, 'edit']);
 Route::patch('posts/{id}' ,[postController::class, 'update']);
 
 // Category
-Route::get("categories",[categoryController::class,'index']);
+Route::get("categories",[categoryController::class,'create']);
+Route::post("categories/store",[categoryController::class, 'store']);
+Route::delete("categories/{id}",[categoryController::class, 'destroy']);

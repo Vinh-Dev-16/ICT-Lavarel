@@ -14,15 +14,7 @@ class categoryController extends Controller
      */
     public function index()
     {
-      $category = DB::table('categories') 
-      ->join('posts', 'categories.id','=' ,'posts.category_id')
-      ->select('posts.title','categories.*')
-      -> orderBy('categories.id')
-      ->get();
-      $post = DB::table('posts')
-      ->select('posts.*')
-      ->get();
-      return view ('categories.create')->with(compact('category','post'));
+     
     }
 
     /**
@@ -32,7 +24,15 @@ class categoryController extends Controller
      */
     public function create()
     {
-        //
+        $category = DB::table('categories') 
+        ->join('posts', 'categories.id','=' ,'posts.category_id')
+        ->select('posts.title','categories.*')
+        -> orderBy('categories.id')
+        ->get();
+        $post = DB::table('posts')
+        ->select('posts.*')
+        ->get();
+        return view ('categories.create')->with(compact('category','post'));
     }
 
     /**
@@ -43,7 +43,13 @@ class categoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $input = $request->all();   
+            Category::create($input);
+            return redirect('categories')->with('thongbao');  
+            }catch (Exception $e){
+            return redirect('categories')->with('categories');  
+            }
     }
 
     /**
@@ -88,6 +94,8 @@ class categoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        return redirect('categories')->with('xoa', 'Da thanh cong');
     }
 }
